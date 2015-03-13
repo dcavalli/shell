@@ -10,9 +10,11 @@ ERROR_TOO_MANY_PARAMETERS="Too many parameters.\nTo set user and password type .
 if [ $# ]
 then
 	echo -e $ERROR_MISSING_PARAMETERS
+	exit 1
 elif [[ -z "$1" || -z "$2" ]]
 then
 	echo -e $ERROR_MISSING_PARAMETERS
+	exit 1
 elif [[ -z "$3" ]]
 then
 	PROXY_URL='usproxy.es.oneadp.com'
@@ -23,6 +25,10 @@ then
 elif [ "$#" -gt 4 ]
 then
 	echo -e $ERROR_TOO_MANY_PARAMETERS
+	exit 1
+else
+	echo "Unexpected error."
+	exit 1
 fi
 
 if [[ ! -f /etc/apt/apt.conf ]] || [[ ! -r /etc/apt/apt.conf ]]
