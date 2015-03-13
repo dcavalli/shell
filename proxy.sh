@@ -34,7 +34,7 @@ fi
 if [[ ! -f /etc/apt/apt.conf ]] || [[ ! -r /etc/apt/apt.conf ]]
 then
     cp /etc/apt/apt.conf.bkp /etc/apt/apt.conf
-    echo "File created >> /etc/apt/apt.conf"
+    echo "File created for apt proxy >> /etc/apt/apt.conf"
 fi
 sed -i 's/^.*/Acquire::http:proxy "http:\/\/'"$USER"':'"$PASSWORD"'@'"$PROXY_URL"':'"$PROXY_PORT"'\/"/g' /etc/apt/apt.conf
 
