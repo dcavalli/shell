@@ -17,7 +17,7 @@ then
 	exit 1
 elif [[ -z "$3" ]]
 then
-	PROXY_URL='usproxy.es.oneadp.com'
+	PROXY_URL='default_proxy'
 	PROXY_PORT='8080'
 elif [[ -z "$4" ]]
 then
