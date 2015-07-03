@@ -28,13 +28,13 @@ then
 	exit 1
 fi
 
-if [[ ! -f /etc/apt/apt.conf ]] || [[ ! -r /etc/apt/apt.conf ]]
+if [[ ! -f /etc/apt/apt.conf.d/95proxies ]] || [[ ! -r /etc/apt/apt.conf.d/95proxies ]]
 then
-    echo " "> /etc/apt/apt.conf
-    echo "File created for apt proxy >> /etc/apt/apt.conf"
+    echo " "> /etc/apt/apt.conf.d/95proxies
+    echo "File created for apt proxy >> /etc/apt/apt.conf.d/95proxies"
 fi
 
-sed -i 's/^.*/Acquire::http:Proxy "http:\/\/'"$USER"':'"$PASSWORD"'@'"$PROXY_URL"':'"$PROXY_PORT"'\/;''"/g' /etc/apt/apt.conf
+sed -i 's/^.*/Acquire::http:Proxy "http:\/\/'"$USER"':'"$PASSWORD"'@'"$PROXY_URL"':'"$PROXY_PORT"'\/;''"/g' /etc/apt/apt.conf.d/95proxies
 
 sed -i 's/http_proxy=.*/http_proxy=http:\/\/'"$USER"':'"$PASSWORD"'@'"$PROXY_URL"':'"$PROXY_PORT"'\//g' /etc/environment
 sed -i 's/https_proxy=.*/https_proxy=http:\/\/'"$USER"':'"$PASSWORD"'@'"$PROXY_URL"':'"$PROXY_PORT"'\//g' /etc/environment
